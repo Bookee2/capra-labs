@@ -203,6 +203,20 @@ button.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-co
 .seasonstrip figcaption{padding:8px 12px;font-size:14px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
 .dayview{position:relative;aspect-ratio:16/6;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#dfe3df;box-shadow:var(--shadow)}
 .dayview img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .08s linear}
+.picker{margin-bottom:14px}
+.pickhead{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 10px;margin-bottom:10px;font:700 15px/1.3 var(--display)}
+.pickhead .muted{font:400 14px/1.3 var(--text)}
+.pickcount{margin-left:auto;font-size:13px;color:var(--muted)}
+.pickcount.full{color:var(--accent)}
+.pickcount.flash{animation:pickflash .6s ease 2}
+@keyframes pickflash{50%{color:var(--ink);transform:scale(1.12)}}
+.pickchips{display:flex;flex-wrap:wrap;gap:7px}
+.pickchips .chip{padding:6px 11px;font-size:13px}
+.mixview{display:grid;grid-template-columns:repeat(auto-fit,minmax(104px,1fr));gap:10px;padding:12px;border:1px solid var(--line);border-radius:14px;background:#dfe3df;box-shadow:var(--shadow)}
+.mcell{margin:0;min-width:0}
+.mbox{position:relative;aspect-ratio:4/5;border-radius:8px;overflow:hidden;background:#cfd5cf}
+.mframe{position:absolute;inset:0;background-repeat:no-repeat}
+.mcell figcaption{font:700 12.5px/1.25 var(--display);color:#26302d;margin-top:6px;text-align:center;overflow-wrap:anywhere}
 .dayctl{display:flex;gap:14px;align-items:center;margin-top:12px}
 .dayctl input{flex:1;accent-color:var(--accent)}
 .dayctl output{min-width:120px;font-size:14px}
