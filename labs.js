@@ -118,6 +118,12 @@
         sync();
       });
     });
+    var find = document.querySelector('.picksearch');
+    if (find) find.addEventListener('input', function () {
+      var t = find.value.trim().toLowerCase();
+      chips.forEach(function (b) { b.hidden = !!t && b.textContent.toLowerCase().indexOf(t) < 0; });
+      document.querySelectorAll('.pickgroup').forEach(function (g) { g.hidden = ![].some.call(g.querySelectorAll('.chip'), function (b) { return !b.hidden; }); });
+    });
     sync();
   }
 

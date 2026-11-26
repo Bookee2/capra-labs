@@ -212,6 +212,14 @@ button.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-co
 @keyframes pickflash{50%{color:var(--ink);transform:scale(1.12)}}
 .pickchips{display:flex;flex-wrap:wrap;gap:7px}
 .pickchips .chip{padding:6px 11px;font-size:13px}
+.chip.pick::before{content:"+";font:800 14px/1 var(--display);width:10px;text-align:center;color:var(--accent)}
+.chip.pick[aria-pressed="true"]::before{content:"✓";color:inherit}
+.pickgroup{display:grid;grid-template-columns:150px minmax(0,1fr);gap:8px 12px;align-items:start;padding:8px 0;border-top:1px solid var(--line)}
+.pickgroup:first-of-type{border-top:0}
+.pickgroup .pg{font:700 12px/1.2 var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:9px}
+.pickgroup[hidden]{display:none}
+.picksearch{width:100%;max-width:360px;margin:2px 0 8px;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font:400 15px/1.2 var(--text)}
+@media (max-width:640px){.pickgroup{grid-template-columns:1fr;gap:6px}.pickgroup .pg{padding-top:0}}
 .mixview{display:grid;grid-template-columns:repeat(auto-fit,minmax(104px,1fr));gap:10px;padding:12px;border:1px solid var(--line);border-radius:14px;background:#dfe3df;box-shadow:var(--shadow)}
 .mcell{margin:0;min-width:0}
 .mbox{position:relative;aspect-ratio:4/5;border-radius:8px;overflow:hidden;background:#cfd5cf}
