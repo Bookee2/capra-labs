@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+# Every page carries noindex: shared by link only.
