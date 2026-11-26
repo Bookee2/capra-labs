@@ -55,11 +55,15 @@
   apply();
 
   // before / after sliders
+  // drag anywhere on the picture (mouse or touch); the hidden range keeps it usable from the keyboard
   document.querySelectorAll('.compare').forEach(function (c) {
-    var r = c.querySelector('input'), bi = c.querySelector('.before img');
-    function size() { if (bi) bi.style.width = c.clientWidth + 'px'; }
-    r.addEventListener('input', function () { c.style.setProperty('--pos', r.value + '%'); });
-    size(); window.addEventListener('resize', size);
+    var r = c.querySelector('input'), down = false;
+    function set(p) { p = Math.max(0, Math.min(100, p)); c.style.setProperty('--pos', p + '%'); if (r) r.value = Math.round(p); }
+    function at(e) { var b = c.getBoundingClientRect(); set((e.clientX - b.left) / b.width * 100); }
+    c.addEventListener('pointerdown', function (e) { down = true; try { c.setPointerCapture(e.pointerId); } catch (x) {} at(e); });
+    c.addEventListener('pointermove', function (e) { if (down) at(e); });
+    ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(function (t) { c.addEventListener(t, function () { down = false; }); });
+    if (r) r.addEventListener('input', function () { set(+r.value); });
   });
 
   // the season engine: a day of the year blends the two nearest renders and moves the line on the calendar
